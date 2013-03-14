@@ -233,7 +233,7 @@ sub _polling {
     $uri->port(8080);
     $uri->query_form({ session => $self->session, counter => $self->counter });
 
-    my $guard = http_get $uri, timeout => 60*5, sub {
+    my $guard = http_get $uri, timeout => 60, sub {
         my ($body, $hdr) = @_;
         return unless $self;
 
