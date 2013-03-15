@@ -117,7 +117,7 @@ sub start_session {
                 $self->_get_channels;
             }
             else {
-                warnf "session verify failed: %s", ddf($res);
+                debugf "session verify failed: %s", ddf($res || $hdr);
                 $self->session(undef);
                 $self->_on_error($res, $hdr);
             }
