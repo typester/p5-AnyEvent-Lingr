@@ -22,8 +22,15 @@ my $cv = AE::cv;
 my $lingr = AnyEvent::Lingr->new(%$conf);
 $lingr->on_error(sub {
     my ($msg) = @_;
-    warn 'Error: ', $msg;
-    $cv->send;
+
+    if ($msg =~ /^596:/) {
+        # reconnect after the timeout
+        $lingr->start_session;
+    }
+    else {
+        warn 'Error: ', $msg;
+        $cv->send;
+    }
 });
 $lingr->on_room_info(sub {
     my ($rooms) = @_;
