@@ -265,14 +265,14 @@ sub _polling {
 }
 
 sub say {
-    my ($self, $room, $msg) = @_;
+    my ($self, $room, $msg, $cb) = @_;
 
     $self->post('room/say', { session => $self->session, room => $room, text => $msg }, sub {
         my ($res, $hdr) = @_;
         return unless $self;
 
         if ($res and $res->{status} eq 'ok') {
-            # ok
+            $cb->($res);
         }
         else {
             $self->_on_error($res, $hdr);
@@ -409,11 +409,19 @@ For updating subscription list, you can use C<update_room_info> method:
 Update joined room info, and fire on_room_info callback.
 This method also update subscription rooms which is target room for on_event callback.
 
-=head2 say($room, $message)
+=head2 say($room, $message [, $cb ])
 
 Say something to lingr room.
 
     $lingr->say('perl_jp', 'hi!');
+
+If you want response data, you can speficy callback.
+The callback is invoked when the API call was successful.
+
+    $lingr->say('perl_jp', 'hi there!', sub {
+        my $res = shift;
+        warn $res->{message}->{id};
+    });
 
 =head1 CALLBACKS
 
