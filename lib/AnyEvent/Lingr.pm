@@ -1,7 +1,7 @@
 package AnyEvent::Lingr;
 use Mouse;
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 use AnyEvent::HTTP;
 
@@ -272,7 +272,7 @@ sub say {
         return unless $self;
 
         if ($res and $res->{status} eq 'ok') {
-            $cb->($res);
+            $cb->($res) if $cb;
         }
         else {
             $self->_on_error($res, $hdr);
