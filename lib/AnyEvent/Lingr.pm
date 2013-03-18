@@ -140,7 +140,7 @@ sub start_session {
                 $self->_get_channels;
             }
             else {
-                warnf "session create failed: %s", ddf($res);
+                debugf "session create failed: %s", ddf($res || $hdr);
                 $self->_on_error($res, $hdr);
             }
         });
