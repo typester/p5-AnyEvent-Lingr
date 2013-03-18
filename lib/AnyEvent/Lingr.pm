@@ -1,7 +1,7 @@
 package AnyEvent::Lingr;
 use Mouse;
 
-our $VERSION = '0.01';
+our $VERSION = '0.03';
 
 use AnyEvent::HTTP;
 
