@@ -1,5 +1,6 @@
 requires "perl" => "5.008001";
 
+requires "Mouse" => "1.05";
 requires "AnyEvent";
 requires "AnyEvent::HTTP";
 requires "JSON";
