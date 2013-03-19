@@ -6,6 +6,7 @@ requires "AnyEvent::HTTP";
 requires "JSON";
 requires "Log::Minimal";
 requires "Try::Tiny";
+requires "URI";
 
 on "author" => sub {
     requires "Module::Install::CPANfile";
