@@ -1,5 +1,8 @@
 Revision history for Perl extension AnyEvent::Lingr
 
+0.06 2013-03-19T11:41:00+09:00
+     - added one more missing prereq: URI
+
 0.05 2013-03-18T16:09:00+09:00
      - fixed a bug that 'cb' parameter of say method should be optional, but not in 0.04
 
