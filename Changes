@@ -1,5 +1,8 @@
 Revision history for Perl extension AnyEvent::Lingr
 
+0.07 2013-03-21T11:42:00+09:00
+     - fixed observe event error message was undef on http level error.
+
 0.06 2013-03-19T11:41:00+09:00
      - added one more missing prereq: URI
 

@@ -1,7 +1,7 @@
 package AnyEvent::Lingr;
 use Mouse;
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 use AnyEvent::HTTP;
 
@@ -256,7 +256,7 @@ sub _polling {
             $self->_polling;
         }
         else {
-            $self->_on_error($res);
+            $self->_on_error($res, $hdr);
         }
     };
     Scalar::Util::weaken($self);
